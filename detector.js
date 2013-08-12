@@ -8,10 +8,10 @@
 
 'use strict';
 
-function Detect() {
+function Detector() {
   
 }
 
-Gaee.prototype.sendData = function () {
+Detector.prototype.sendData = function () {
   
 };
