@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+</head>
+<body>
+  <script src="components/swfobject/swfobject/swfobject.js"></script>
+  <script src="detector.js"></script>
+  <script>
+    var detector = new Detector();
+
+    console.log('as array', detector.collect(['browser', 'flash']));
+    console.log('as single string', detector.collect('browser'));
+    console.log('with a cusomt method', detector.collect('something', function() {
+      return 'getting flash version';
+    }));
+    console.log('as single string', detector.collect(1));
+  </script>
+</body>
+</html>
