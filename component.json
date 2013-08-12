@@ -1,0 +1,8 @@
+{
+  "name": "detector.js",
+  "version": "0.0.0",
+  "dependencies": {
+    "swfobject": "2.3.x"
+  },
+  "devDependencies": {}
+}
