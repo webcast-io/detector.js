@@ -1,23 +1,43 @@
 <!doctype html>
 <head>
   <meta charset="utf-8">
-  <title>Example</title>
+  <title>detector.js</title>
 </head>
 <body>
   <script src="components/swfobject/swfobject/swfobject.js"></script>
   <script src="detector.js"></script>
   <script>
+
     // Variable from some object
-    var stream = 'rtmp://streaming.axisto.co.uk/live/streamer1/8902390042390'
-
+    var stream = 'rtmp://streaming.axisto.co.uk/live/streamer1/8902390042390';
+    
     var detector = new Detector();
+    
+    // Collect
+    detector.collect('browser')
+            .collect('flash')
+            .collect('stream', function() {
+              return stream.match(/^[a-z]{4}/g)[0];
+            });
+    
+    // Modify
+    detector.data.flash = (function(flash) {
+      return flash.major + '.' + flash.minor + '.' + flash.release;
+    })(detector.data.flash);
+    
+    // Send to report
+    var xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState === 4) {
+          
+      }
+    };
+    
+    xmlhttp.open('POST', "http://127.0.0.1", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(JSON.stringify(detector.data));
 
-    detector.collect(['browser', 'flash'])
-    .collect('stream', function() {
-      return stream.match(/^[a-z]{4}/gi);
-    });
-
-    console.log(detector.data);
   </script>
 </body>
 </html>
