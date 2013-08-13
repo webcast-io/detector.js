@@ -9,7 +9,7 @@
 'use strict';
 
 function Detector() {
-  this.data = [];
+  this.data = {};
 }
 
 Detector.prototype.collect = function (property, collector) {
