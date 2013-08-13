@@ -14,7 +14,7 @@ function Detector() {
 
 Detector.prototype.collect = function (property, collector) {
   if (property === undefined || typeof property === 'number') {
-    throw 'Properties must be a string property name or an array of property names';
+    throw new Error('Properties must be a string property name or an array of property names');
   }
 
   if (Object.prototype.toString.call(property) === '[object Array]') {
@@ -40,7 +40,7 @@ Detector.prototype.getBrowser = function () {
 
 Detector.prototype.getFlash = function () {
   if (window.swfobject === undefined) {
-    throw 'SWFObject is not available. SWFObject is required for Adobe Flash detection.';
+    throw new Error('SWFObject is not available. SWFObject is required for Adobe Flash detection.');
   } else {
     return window.swfobject.getFlashPlayerVersion();
   }
