@@ -7,14 +7,17 @@
   <script src="components/swfobject/swfobject/swfobject.js"></script>
   <script src="detector.js"></script>
   <script>
+    // Variable from some object
+    var stream = 'rtmp://streaming.axisto.co.uk/live/streamer1/8902390042390'
+
     var detector = new Detector();
 
-    console.log('as array', detector.collect(['browser', 'flash']));
-    console.log('as single string', detector.collect('browser'));
-    console.log('with a cusomt method', detector.collect('something', function() {
-      return 'getting flash version';
-    }));
-    console.log('as single string', detector.collect(1));
+    detector.collect(['browser', 'flash'])
+    .collect('stream', function() {
+      return stream.match(/^[a-z]{4}/gi);
+    });
+
+    console.log(detector.data);
   </script>
 </body>
 </html>
