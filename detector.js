@@ -10,9 +10,13 @@
 
 function Detector() {
   this.data = {};
+
+  // Store the current time
+  this.data.time = new Date();
 }
 
 Detector.prototype.collect = function (property, collector) {
+
   if (property === undefined || typeof property === 'number') {
     throw new Error('Properties must be a string property name or an array of property names');
   }
@@ -28,22 +32,29 @@ Detector.prototype.collect = function (property, collector) {
   }
 
   return this;
+
 };
 
 Detector.prototype.getMethodByProperty = function (method) {
+
   return 'get' + method.charAt(0).toUpperCase() + method.substr(1).toLowerCase();
+
 };
 
 Detector.prototype.getBrowser = function () {
+
   return navigator.userAgent;
+
 };
 
 Detector.prototype.getFlash = function () {
+
   if (window.swfobject === undefined) {
     throw new Error('SWFObject is not available. SWFObject is required for Adobe Flash detection.');
   } else {
     return window.swfobject.getFlashPlayerVersion();
   }
+
 };
 
 
