@@ -7,24 +7,24 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: ['Gruntfile.js', 'detector.js']
+      all: ['*.js', 'test/**/*.js']
     },
 
     inlinelint: {
-      html: ['index.html']
+      html: ['index.html', 'test/index.html']
     },
 
     htmllint: {
-      all: ['index.html']
-    }
+      all: ['index.html', 'test/index.html']
+    },
 
-    // mocha: {
-    //   src: ['test/index.html'],
-    //   options: {
-    //     run: true,
-    //     reporter: 'Spec'
-    //   }
-    // }
+    mocha: {
+      src: ['test/index.html'],
+      options: {
+        run: true,
+        reporter: 'Spec'
+      }
+    }
 
   });
 
@@ -33,5 +33,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-html');
   grunt.loadNpmTasks('grunt-mocha');
 
-  grunt.registerTask('default', ['jshint', 'inlinelint', 'htmllint']);
+  grunt.registerTask('lint', ['jshint', 'inlinelint', 'htmllint']);
+  grunt.registerTask('test', ['mocha']);
+
+  grunt.registerTask('default', ['lint', 'test']);
 };
