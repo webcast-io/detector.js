@@ -55,7 +55,7 @@
 
         var stream = 'rtmp://streaming.axisto.co.uk/live/streamer1/8902390042390';
 
-        this.detector.collect('stream', function() {
+        this.detector.collect('stream', function () {
           return stream.match(/^[a-z]{4}/g)[0];
         });
 
