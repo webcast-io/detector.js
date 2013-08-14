@@ -2,10 +2,12 @@
 
 module.exports = function (grunt) {
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: '.jshintrc',
+        ignores: ['detector.min.js']
       },
       all: ['*.js', 'test/**/*.js']
     },
@@ -25,6 +27,17 @@ module.exports = function (grunt) {
         reporter: 'Spec',
         log: true
       }
+    },
+
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      target: {
+        files: {
+          'detector.min.js': ['detector.js']
+        }
+      }
     }
 
   });
@@ -33,9 +46,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-lint-inline');
   grunt.loadNpmTasks('grunt-html');
   grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('lint', ['jshint', 'inlinelint', 'htmllint']);
   grunt.registerTask('test', ['mocha']);
+
+  grunt.registerTask('package', ['lint', 'test', 'uglify']);
 
   grunt.registerTask('default', ['lint', 'test']);
 };
