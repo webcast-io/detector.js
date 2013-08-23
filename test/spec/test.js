@@ -42,6 +42,14 @@
 
       });
 
+      it('should accept a single property as a string');
+
+      it('should accept an array of properties as string');
+
+      it('should accept an object literal of properties and values');
+
+      it('should accept a single property/value as two arguments');
+
       it('should add the property to the data property', function () {
 
         this.detector.collect('browser');

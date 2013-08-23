@@ -21,3 +21,13 @@ Collect information about a viewer's system and send it to your reporting system
       // RTMP, RTMPT, HTTP or RTSP
       return player.streamType;
     });
+
+## Support
+
+Detector.js has been tested in the following browsers. It might well work in others but we haven't checked them yet.
+
+### Version 0.1.0
+
+- Chrome 28.0.1500.95
+- Mobile Safari 6.0
+- Internet Explorer 7
