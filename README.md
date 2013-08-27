@@ -1,5 +1,7 @@
 # detector.js
 
+[![Build Status](https://travis-ci.org/axisto-live/detector.js.png?branch=master)](https://travis-ci.org/axisto-live/detector.js)
+
 Collect information about a viewer's system and send it to your reporting system.
 
 - Browser version

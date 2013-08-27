@@ -13,9 +13,6 @@
     "type": "git",
     "url": ""
   },
-  "scripts": {
-    "test": "grunt test"
-  },
   "devDependencies": {
     "bower": "1.1.x",
     "grunt": "~0.4.0",
@@ -27,9 +24,11 @@
     "grunt-lint-inline": "~0.2.0",
     "grunt-contrib-uglify": "~0.2.2"
   },
-  "peerDependencies": {},
+  "scripts": {
+    "test": "grunt test"
+  },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.x"
   },
   "licenses": []
 }
